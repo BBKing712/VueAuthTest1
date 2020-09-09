@@ -3,6 +3,7 @@
     <Nav />
     <router-view/>
   </div>
+
 </template>
 <script>
 import Nav from './components/partials/Nav.vue';

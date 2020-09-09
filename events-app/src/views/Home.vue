@@ -1,7 +1,20 @@
 <template>
 <div class="home">
   <section class="hero is-dark">
-    <!-- ... -->
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title">
+          Welcome to the Animal Rescue League          
+        </h1>
+        <h2 class="subtitle">
+          Make sure you check out our upcoming events below
+        </h2>
+        <div class="button-block">
+  <button v-if="!$auth.isAuthenticated" @click="login" class="button is-xl is-dark">Sign Up to Browse Events</button>
+  <h3 v-if="$auth.isAuthenticated" class="is-size-3 has-background-dark welcome">Welcome, {{ $auth.user.name }}!</h3>
+</div>
+      </div>
+    </div>
   </section>
   <EventsList />
 </div>
@@ -12,6 +25,12 @@ export default {
   name: 'home',
   components: {
     EventsList
+  },
+  methods: {
+    // Log the user in
+    login() {
+      this.$auth.loginWithRedirect();
+    }
   }
 }
 </script>
